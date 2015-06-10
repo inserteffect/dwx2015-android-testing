@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">App</string>
+    <string name="navigation_item_1">Item 1</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Closed</string>
+    <string name="action_refresh">refresh</string>
+</resources>
