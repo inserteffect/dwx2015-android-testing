@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 }
                 mSwipeRefreshLayout.setRefreshing(false);
             }
-        }.execute(2951825);
+        }.execute(2951825, 2861650);
     }
 
     @Module

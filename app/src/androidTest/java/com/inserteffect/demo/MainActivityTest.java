@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -37,7 +38,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.core.Is.is;
-import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyVararg;
 import static org.mockito.Mockito.when;
 
 @RunWith(AndroidJUnit4.class)
@@ -63,7 +64,7 @@ public class MainActivityTest {
 
     @Test
     public void displayEmptyView() throws ServiceException {
-        when(mService.getData(anyInt())).thenReturn(new ArrayList<Data>());
+        when(mService.getData(Matchers.<Integer>anyVararg())).thenReturn(new ArrayList<Data>());
 
         mActivityTestRule.launchActivity(new Intent());
 
@@ -74,7 +75,7 @@ public class MainActivityTest {
 
     @Test
     public void displayErrorView() throws ServiceException {
-        when(mService.getData(anyInt())).then(new Answer<Object>() {
+        when(mService.getData(Matchers.<Integer>anyVararg())).then(new Answer<Object>() {
             @Override
             public Object answer(InvocationOnMock invocation) throws Throwable {
                 throw new ServiceException("Test exception.");
@@ -103,7 +104,7 @@ public class MainActivityTest {
                 return "Description";
             }
         });
-        when(mService.getData(anyInt())).thenReturn(data);
+        when(mService.getData(Matchers.<Integer>anyVararg())).thenReturn(data);
 
         mActivityTestRule.launchActivity(new Intent());
 
@@ -127,7 +128,7 @@ public class MainActivityTest {
     @Test
     public void shouldDisplayExceptionMessageAfterRefreshing() throws ServiceException {
 
-        when(mService.getData(anyInt())).thenReturn(new ArrayList<Data>());
+        when(mService.getData(Matchers.<Integer>anyVararg())).thenReturn(new ArrayList<Data>());
 
         mActivityTestRule.launchActivity(new Intent());
 
@@ -135,7 +136,7 @@ public class MainActivityTest {
                 .check(matches(isDisplayed()))
                 .check(matches(withText("Empty.")));
 
-        when(mService.getData(anyInt())).then(new Answer<Object>() {
+        when(mService.getData(Matchers.<Integer>anyVararg())).then(new Answer<Object>() {
             @Override
             public Object answer(InvocationOnMock invocation) throws Throwable {
                 throw new ServiceException("Test exception.");

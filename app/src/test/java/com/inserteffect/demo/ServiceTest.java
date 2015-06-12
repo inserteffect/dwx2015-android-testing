@@ -5,6 +5,7 @@ import com.inserteffect.demo.Service.Provider;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -59,6 +60,6 @@ public class ServiceTest {
 
         when(mConnectivityManager.getActiveNetworkInfo()).thenReturn(mNetworkInfo);
         when(mNetworkInfo.isConnectedOrConnecting()).thenReturn(true);
-        assertNotNull(mService.getData());
+        assertNotNull(mService.getData(Matchers.<Integer>anyVararg()));
     }
 }
