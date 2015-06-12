@@ -6,7 +6,9 @@ Apps können schnell zu komplizierten Softwareartefakten heranwachsen. Eine aktu
 andauernde Herausforderungen bei der Pflege und Weiterentwicklung der Codebasis. Manuelle Tests sind zeitintensiv und können nicht immer alle
 Testfälle abdecken [DWX Programm](https://goo.gl/3j2wQZ).
 
-[Google Docs Präsentation](https://goo.gl/JXOJFZ) [![Build Status](https://travis-ci.org/inserteffect/dwx2015-android-testing.svg?branch=master)](https://travis-ci.org/inserteffect/dwx2015-android-testing)
+[Google Docs Präsentation](https://goo.gl/JXOJFZ)
+
+##Android Instrumentation Test [![Build Status](https://travis-ci.org/inserteffect/dwx2015-android-testing.svg?branch=master)](https://travis-ci.org/inserteffect/dwx2015-android-testing)
 
 ![Screenshot](android-instrumentation-test.gif "UI Tests")
 

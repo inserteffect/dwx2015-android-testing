@@ -28,3 +28,4 @@ before_script:
 script:
   - ./gradlew connectedCheck
   - ./gradlew check
+  - ./gradlew assembleRelease
