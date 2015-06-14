@@ -41,7 +41,7 @@ public class OpenWeatherMapParserTest {
 
     @Test
     public void shouldParseJsonResponseFromOpenWeatherMapGroupIdsRequest() throws JSONException {
-        final List<Service.Data> actual = Parser.getData(mInput);
+        final List<Service.Data> actual = Parser.parse(mInput);
         assertEquals(mExpected, actual.size());
         if (actual.size() > 0) {
             assertEquals("Bayreuth", actual.get(0).getTitle());
