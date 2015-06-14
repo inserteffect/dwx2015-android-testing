@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLStreamHandler;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -31,6 +32,17 @@ import static com.inserteffect.demo.Service.Provider;
  */
 public final class OpenWeatherMap implements Provider {
 
+    final URLStreamHandler mStreamHandler;
+
+    @VisibleForTesting
+    OpenWeatherMap(URLStreamHandler streamHandler) {
+        mStreamHandler = streamHandler;
+    }
+
+    public OpenWeatherMap() {
+        this(null);
+    }
+
     /**
      * * Current weather from Open Weather Map. See <a href="http://openweathermap.org/current">API documentation.</a>
      *
@@ -43,8 +55,12 @@ public final class OpenWeatherMap implements Provider {
 
         try {
 
-            final String response = Request.getResponse(id);
-            return Parser.getData(response);
+            final String ids = Arrays.toString(id).replaceAll("[ \\[\\]]", "");
+            URL url = new URL("http", "api.openweathermap.org", 80, String.format("/data/2.5/group?id=%s&units=metric&lang=de", ids), mStreamHandler);
+
+            final String response = Request.connect(url);
+
+            return Parser.parse(response);
 
         } catch (MalformedURLException e) {
             throw new ServiceException("Malformed URL.");
@@ -57,10 +73,9 @@ public final class OpenWeatherMap implements Provider {
 
     private final static class Request {
 
-        private final static String getResponse(Integer... id) throws IOException {
+        @VisibleForTesting
+        final static String connect(URL url) throws IOException {
 
-            final String ids = Arrays.toString(id).replaceAll("[ \\[\\]]", "");
-            URL url = new URL("http", "api.openweathermap.org", 80, String.format("/data/2.5/group?id=%s&units=metric&lang=de", ids));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setUseCaches(false);
             connection.setDoOutput(false);
@@ -76,7 +91,7 @@ public final class OpenWeatherMap implements Provider {
     static class Parser {
 
         @VisibleForTesting
-        static List<Data> getData(String json) throws JSONException {
+        static List<Data> parse(String json) throws JSONException {
 
             List<Data> data = Collections.EMPTY_LIST;
             if (json != null && json.length() > 0) {

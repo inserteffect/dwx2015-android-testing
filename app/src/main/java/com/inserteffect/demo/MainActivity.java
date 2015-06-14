@@ -63,10 +63,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         mAdapter = new Adapter(this, new ArrayList<Data>());
         mListView.setAdapter(mAdapter);
         mListView.setEmptyView(mMessage);
-        mSwipeRefreshLayout.setColorSchemeResources(
-                R.color.accent,
-                R.color.accent,
-                R.color.accent);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.accent);
         mSwipeRefreshLayout.setOnRefreshListener(this);
     }
 
