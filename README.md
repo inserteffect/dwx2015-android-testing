@@ -10,7 +10,17 @@ Testfälle abdecken [DWX Programm](https://goo.gl/3j2wQZ).
 
 ##Android Instrumentation Test [![Build Status](https://travis-ci.org/inserteffect/dwx2015-android-testing.svg?branch=master)](https://travis-ci.org/inserteffect/dwx2015-android-testing)
 
-![Screenshot](android-instrumentation-test.gif "UI Tests")
+![Screenshot](assets/MainActivityTest.png "MainActivity Tests")
+
+![Screenshot](assets/android-instrumentation-test.gif "UI Tests")
+
+##Unit Test [![Build Status](https://travis-ci.org/inserteffect/dwx2015-android-testing.svg?branch=master)](https://travis-ci.org/inserteffect/dwx2015-android-testing)
+
+![Screenshot](assets/ServiceTest.png "Service Tests")
+
+![Screenshot](assets/OpenWeatherMapParserTest.png "Open Weather Map Parser Tests")
+
+![Screenshot](assets/OpenWeatherMapTest.png "Open Weather Map Tests")
 
 License
 -------

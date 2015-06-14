@@ -21,7 +21,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("demo.keystore")
+            storeFile file("../assets/demo.keystore")
             storePassword System.getenv('TRAVIS_STORE_PASSWORD')
             keyAlias System.getenv('TRAVIS_KEY_ALIAS')
             keyPassword System.getenv('TRAVIS_KEY_PASSWORD')
@@ -34,7 +34,7 @@ android {
         }
         release {
             signingConfig signingConfigs.release
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
